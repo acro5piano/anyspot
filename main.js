@@ -19,11 +19,20 @@ app.on('window-all-closed', function() {
   }
 });
 
+var ipc = require('electron').ipcMain;
+
+ipc.on('invokeAction', function(event, data){
+    // var result = processData(data);
+    // event.sender.send('actionReply', result);
+    console.log(data)
+});
+
 // Electronの初期化完了後に実行
 app.on('ready', function() {
   // メイン画面の表示。ウィンドウの幅、高さを指定できる
   mainWindow = new BrowserWindow({width: 800, height: 600});
   mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow.openDevTools();
 
   // ウィンドウが閉じられたらアプリも終了
   mainWindow.on('closed', function() {
