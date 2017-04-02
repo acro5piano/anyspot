@@ -27,6 +27,7 @@ ipc.on('invokeAction', function(event, data){
     console.log(data)
 });
 
+
 // Electronの初期化完了後に実行
 app.on('ready', function() {
   // メイン画面の表示。ウィンドウの幅、高さを指定できる
